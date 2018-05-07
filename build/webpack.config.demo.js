@@ -28,7 +28,7 @@ const devServer = {
 }
 config = merge(baseConfig, {
   devtool: '#cheap-module-eval-source-map',
-  entry: path.join(__dirname, '../demo/instance/index.js'),
+  entry: path.join(__dirname, '../demo/index.js'),
   module: {
     rules: [
       {
