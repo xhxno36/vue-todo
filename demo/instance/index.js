@@ -1,5 +1,12 @@
 import Vue from 'vue'
 
+/* new Vue({
+  template: '<div>{{message}}</div>',
+  data: {
+    message: 'hello vue'
+  }
+}).$mount('#root') */
+
 const app = new Vue({
   el: '#root',
   /* props: {
