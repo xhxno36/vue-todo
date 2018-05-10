@@ -28,7 +28,7 @@ const ScopeComponent = {
       value: 0,
       message: 'hello from scope component',
       style: {
-        width: '200px',
+        width: '500px',
         height: '200px',
         border: '1px solid #ccc'
       }
@@ -50,10 +50,57 @@ const ScopeComponent = {
   `
 }
 
+const CustomComponent = {
+  props: {
+    type: String
+  },
+  data () {
+    return {
+      value: 0,
+      buttonTxt: '点击',
+      style: {
+        color: 'red'
+      }
+    }
+  },
+  methods: {
+    handleClick () {
+      alert('custom component clicked')
+    }
+  },
+  /* template: `
+    <div :style>
+      <slot name="header"></slot>
+      <slot></slot>
+      <slot name="footer"></slot>
+      <button @click="handleClick" type="button">{{buttonTxt}}</button>
+    </div>
+  ` */
+
+  // render方法渲染上面的template模板
+  render (createElement) {
+    return createElement('div', {
+      ref: 'content',
+      style: this.style
+    }, [
+      this.$slots.header,
+      this.$slots.default,
+      this.$slots.footer,
+      createElement('button', {
+        type: 'button',
+        on: {
+          click: this.handleClick
+        }
+      }, this.buttonTxt)
+    ])
+  }
+}
+
 new Vue({
   el: '#root',
   components: {
-    ScopeComponent
+    ScopeComponent,
+    CustomComponent
   },
   data: {
     name: 'root',
@@ -64,7 +111,7 @@ new Vue({
       console.log(newVal)
     }
   },
-  // 使用局部注册的组件
+  /* // 使用局部注册的组件
   template: `
     <div>
       <scope-component :name="name" :num="num"  @change="handleChange">
@@ -72,8 +119,47 @@ new Vue({
         <div slot-scope="props">{{props.message}} {{name}}</div>
         <span slot="footer">this is footer</span>
       </scope-component>
+
+      <custom-component>
+          <div slot="header">this is custom header</div>
+          this is custom content
+          <div slot="footer">this is custom footer</div>
+      </custom-component>
     </div>
-  `
+  ` */
+  render (createElement) {
+    return createElement('div', {}, [
+      createElement('scope-component', {
+        props: {
+          name: this.name,
+          num: this.num
+        },
+        on: {
+          change: this.handleChange
+        }
+      }, [
+        createElement('span', {
+          slot: 'header'
+        }, 'this is header from scope component render function'),
+        createElement('div', {}, [
+          this.name
+        ]),
+        createElement('div', {
+          slot: 'footer'
+        }, 'this is footer from scope component render function')
+      ]),
+      createElement('custom-component', {}, [
+        createElement('div', {
+          slot: 'header'
+        }, 'this is custom header'),
+        'this is custom content',
+        createElement('div', {
+          slot: 'footer'
+        }, 'this is custom footer')
+      ])
+
+    ])
+  }
   /* // 使用全局注册的组件
   template: '<component1/>' */
 })

@@ -3,4 +3,4 @@
 // import './lifecircle'
 // import './data-binding'
 // import './computed-watch'
-import './component/define'
+import './component/extend'
