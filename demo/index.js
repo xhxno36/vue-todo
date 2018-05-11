@@ -4,4 +4,5 @@
 // import './data-binding'
 // import './computed-watch'
 // import './component/extend'
-import './condition'
+// import './condition'
+import './loop'
