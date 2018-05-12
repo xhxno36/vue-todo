@@ -5,4 +5,4 @@
 // import './computed-watch'
 // import './component/extend'
 // import './condition'
-import './loop'
+import './component/binding'
