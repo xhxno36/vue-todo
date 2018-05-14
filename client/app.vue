@@ -1,9 +1,10 @@
 <template>
   <div id="app">
       <div class="cover"></div>
-      <todo-header></todo-header>
-      <todo-body></todo-body>
-      <todo-footer></todo-footer>
+      <todo-header/>
+      <!-- <todo-body></todo-body> -->
+      <router-view/>
+      <todo-footer/>
   </div>
 </template>
 <script>

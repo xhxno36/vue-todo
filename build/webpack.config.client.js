@@ -4,6 +4,7 @@ const merge = require('webpack-merge')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const baseConfig = require('./webpack.config.base')
+const path = require('path')
 
 const isDev = process.env.NODE_ENV === 'development'
 let config
@@ -60,7 +61,7 @@ if (isDev) {
     devServer,
     plugins: defaultPlugins.concat([
       new HTMLPlugin({
-        filename: 'index.html'
+        template: path.join(__dirname, 'template.html')
       }),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NoEmitOnErrorsPlugin()
@@ -99,6 +100,7 @@ if (isDev) {
       new webpack.HashedModuleIdsPlugin(),
       new HTMLPlugin({
         filename: 'index.html',
+        template: path.join(__dirname, 'template.html'),
         chunks: ['runtime', 'vendor', 'main']
       }),
       new ExtractTextPlugin('styles.[contentHash:8].css'),
