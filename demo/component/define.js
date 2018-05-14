@@ -136,14 +136,15 @@ new Vue({
         },
         on: {
           change: this.handleChange
+        },
+        // 作用域插槽写法
+        scopedSlots: {
+          default: props => createElement('div', {}, [props.message, ' ', this.name])
         }
       }, [
         createElement('span', {
           slot: 'header'
         }, 'this is header from scope component render function'),
-        createElement('div', {}, [
-          this.name
-        ]),
         createElement('div', {
           slot: 'footer'
         }, 'this is footer from scope component render function')
