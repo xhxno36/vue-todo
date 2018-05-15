@@ -6,4 +6,5 @@
 // import './component/extend'
 // import './condition'
 // import './component/binding'
-import './component/define'
+// import './component/define'
+import './transition'
