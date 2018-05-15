@@ -36,7 +36,7 @@ if (isDev) {
       // 页面的路径默认是根目录下面的index.html
       // 和output下面的publicPath配置有关
       // 如果设置了publicPath 则这里也需要加上publicPath的路径
-      index: '/public/index.html'
+      index: '/index.html'
     }
   }
   config = merge(baseConfig, {
