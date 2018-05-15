@@ -3,7 +3,9 @@
       <div class="cover"></div>
       <todo-header/>
       <!-- <todo-body></todo-body> -->
-      <router-view/>
+      <keep-alive>
+        <router-view/>
+      </keep-alive>
       <todo-footer/>
   </div>
 </template>

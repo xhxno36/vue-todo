@@ -6,5 +6,9 @@ Vue.use(VueRouter)
 
 export default new VueRouter({
   routes,
-  mode: 'history'
+  // mode: 'history',
+  // base: '/client/'
+  // scrollBehavior: () => {}
+  linkActiveClass: 'router-link-active',
+  linkExactActiveClass: 'router-link-exact-active'
 })
