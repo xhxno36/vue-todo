@@ -26,11 +26,21 @@ export default [
     component: Login,
     // 向login组件传递props
     props: true
+    /* props: {
+      id: '456'
+    } */
+    // props: (route) => ({id: route.query.id})
   },
   {
     path: '/todo',
     name: 'todo',
     alias: '/dashboard',
-    component: Todo
+    component: Todo,
+    children: [
+      {
+        path: 'sub',
+        component: Login
+      }
+    ]
   }
 ]

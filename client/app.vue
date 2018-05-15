@@ -3,8 +3,16 @@
       <div class="cover"></div>
       <todo-header/>
       <!-- <todo-body></todo-body> -->
+      <router-link to="/login">login</router-link>
+      <router-link to="/login/id">login</router-link>
+      <router-link to="/todo">todo</router-link>
+
+      <router-link to="/todo/sub">todo sub</router-link>
+
       <keep-alive>
-        <router-view/>
+        <transition name="fade">
+          <router-view/>
+        </transition>
       </keep-alive>
       <todo-footer/>
   </div>

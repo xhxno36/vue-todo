@@ -28,7 +28,16 @@ if (isDev) {
     },
     // 是否启用热加载 修改代码的时候不会刷新页面 就能显示修改的结果
     hot: true,
-    open: true
+    open: true,
+    historyApiFallback: {
+      // 配合vue-router的 当vue-router设置了mode:history模式时，
+      // 直接url路径访问会报404的错误，为了屏蔽这个错误
+      // 可以在这里设置当错误发生时 跳转的页面
+      // 页面的路径默认是根目录下面的index.html
+      // 和output下面的publicPath配置有关
+      // 如果设置了publicPath 则这里也需要加上publicPath的路径
+      index: '/public/index.html'
+    }
   }
   config = merge(baseConfig, {
     devtool: '#cheap-module-eval-source-map',

@@ -11,6 +11,7 @@ const config = {
   output: {
     path: path.join(__dirname, '..', 'dist'),
     filename: 'bundle.[hash:8].js'
+    // publicPath: '/public/'
   },
   module: {
     rules: [
