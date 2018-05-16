@@ -6,17 +6,17 @@ export default [
     path: '/',
     name: 'home',
     // https://router.vuejs.org/zh-cn/essentials/redirect-and-alias.html
-    // redirect: '/login'
+    redirect: '/login'
     /* redirect: {
       name: 'login'
     } */
-    redirect: to => {
-      console.log(to)
+    /* redirect: to => {
+      // console.log(to)
       // return '/login'
       return {
         name: 'login'
       }
-    }
+    } */
   },
   {
     path: '/login/:id?',
@@ -24,6 +24,10 @@ export default [
     // 别名
     alias: '/denglu',
     component: Login,
+    beforeEnter (to, from, next) {
+      console.log('beforeEnter invoked')
+      next()
+    },
     // 向login组件传递props
     props: true
     /* props: {

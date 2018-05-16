@@ -4,7 +4,7 @@
       <todo-header/>
       <!-- <todo-body></todo-body> -->
       <router-link to="/login">login</router-link>
-      <router-link to="/login/id">login</router-link>
+      <router-link to="/login/456">login 456</router-link>
       <router-link to="/todo">todo</router-link>
 
       <router-link to="/todo/sub">todo sub</router-link>
