@@ -6,17 +6,14 @@ export default [
     path: '/',
     name: 'home',
     // https://router.vuejs.org/zh-cn/essentials/redirect-and-alias.html
-    redirect: '/login'
-    /* redirect: {
-      name: 'login'
-    } */
-    /* redirect: to => {
-      // console.log(to)
+    redirect: to => {
+      console.log('routes path:/ home')
+      console.log(to)
       // return '/login'
       return {
         name: 'login'
       }
-    } */
+    }
   },
   {
     path: '/login/:id?',
@@ -25,7 +22,7 @@ export default [
     alias: '/denglu',
     component: Login,
     beforeEnter (to, from, next) {
-      console.log('beforeEnter invoked')
+      console.log('login routes beforeEnter invoked')
       next()
     },
     // 向login组件传递props
@@ -40,9 +37,19 @@ export default [
     name: 'todo',
     alias: '/dashboard',
     component: Todo,
+    beforeEnter (to, from, next) {
+      console.log('todo routes beforeEnter invoked')
+      next()
+    },
+    meta: {
+      requireAuth: true
+    },
     children: [
       {
         path: 'sub',
+        meta: {
+          requireAuth: true
+        },
         component: Login
       }
     ]

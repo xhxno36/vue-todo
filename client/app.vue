@@ -6,7 +6,6 @@
       <router-link to="/login">login</router-link>
       <router-link to="/login/456">login 456</router-link>
       <router-link to="/todo">todo</router-link>
-
       <router-link to="/todo/sub">todo sub</router-link>
 
       <keep-alive>
@@ -14,17 +13,18 @@
           <router-view/>
         </transition>
       </keep-alive>
+
       <todo-footer/>
   </div>
 </template>
 <script>
 import TodoHeader from 'layout/TodoHeader.vue'
-import TodoBody from 'views/todo/TodoBody.vue'
+// import TodoBody from 'views/todo/TodoBody.vue'
 import TodoFooter from 'layout/TodoFooter.vue'
 export default {
   components: {
     TodoHeader,
-    TodoBody,
+    // TodoBody,
     TodoFooter
   }
 }

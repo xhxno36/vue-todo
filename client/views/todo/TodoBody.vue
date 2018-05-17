@@ -28,6 +28,30 @@ import TodoBodyItem from './TodoBodyItem.vue'
 import TodoBodyTabs from './TodoBodyTabs.vue'
 let count = 0
 export default {
+  // 当前路由切换进来之前调用
+  beforeRouteEnter (to, from, next) {
+    // console.log('TodoBody.vue before route enter')
+    // 获取不到当前组件 this
+    // console.log(this) 报undefined错误
+
+    // 需要在next的回调函数里面去获取
+    next(vm => {
+      console.log('TodoBody.vue before route enter', vm.filter)
+    })
+  },
+  // 当前路由参数变化时会调用 /path => /path/123
+  beforeRouteUpdate (to, from, next) {
+    console.log('TodoBody.vue before route update')
+    next()
+  },
+  // 当前路由切换离开之前执行
+  beforeRouteLeave (to, from, next) {
+    console.log('TodoBody.vue before route leave')
+
+    if (confirm('确认离开吗')) {
+      next()
+    }
+  },
   data () {
     return {
       filter: 'all',
