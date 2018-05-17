@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './app.vue'
 import router from './router'
-// import store from './store'
+import store from './store'
 
 // import './assets/styles/global.css';
 // import './assets/images/fg.jpg';
@@ -28,6 +28,6 @@ router.afterEach((to, from) => {
 
 new Vue({
   router,
-  // store,
+  store,
   render: (h) => h(App)
 }).$mount('#root')
