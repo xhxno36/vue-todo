@@ -1,6 +1,6 @@
 <template>
   <form class="login-form">
-    <h1>Login</h1>
+    <h1>Login {{ stateNum }}</h1>
     <div class="form-group">
       <input type="text" class="form-control" placeholder="User Name" :value="username">
       <div class="error-msg" v-if="usernameError">{{usernameError}}</div>
@@ -9,11 +9,12 @@
       <input type="password" class="form-control" placeholder="Password" v-model="password">
       <div class="error-msg" v-if="passwordError">{{passwordError}}</div>
     </div>
+    {{ getFullname }}
     <button class="btn btn-block btn-primary" type="submit" @click.prevent="checkLogin">登&emsp;&emsp;录</button>
   </form>
 </template>
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters, mapActions, mapMutations } from 'vuex'
 export default {
   // 在渲染该组件的对应路由被 confirm 前调用
   // 不！能！获取组件实例 `this`
@@ -56,6 +57,30 @@ export default {
   // 在路由更新 /path => /path/123 的时候 不会被调用
   mounted () {
     console.log('login mounted')
+
+    // 使用mutation
+    /* let i = 0
+    setInterval(() => {
+      this.$store.commit('UPDATE_STATE_NUM', {
+        num: i++,
+        num2: 2
+      })
+      this.updateStateNum({
+        num: i++,
+        num2: 2
+      })
+    }, 1000) */
+
+    // 使用action
+    /* this.$store.dispatch('updateStateNumAsync', {
+      num: 5,
+      time: 5000
+    }) */
+
+    this.updateStateNumAsync({
+      num: 6,
+      time: 3000
+    })
   },
   data () {
     return {
@@ -65,28 +90,34 @@ export default {
       passwordError: ''
     }
   },
-  computed: mapState({
-    // 箭头函数可使代码更简练
-    count: state => state.count,
-    // 传字符串参数 'count' 等同于 `state => state.count`
-    countAlias: 'count',
-    // 为了能够使用 `this` 获取局部状态，必须使用常规函数
-    countPlusLocalState (state) {
-      return state.count + this.id
-    }
-  }),
+  computed: {
+    /* stateNum() {
+      return this.$store.state.stateNum
+    }, */
+    ...mapState(['stateNum']),
+    ...mapGetters({
+      getFullname: 'fullName'
+    })
+    /* fullName () {
+      return this.$store.getters.fullName
+    } */
+  },
   methods: {
     checkLogin () {
-    }
-  },
-  watch: {
+    },
+    ...mapMutations({
+      updateStateNum: 'UPDATE_STATE_NUM'
+    }),
+    ...mapActions(['updateStateNumAsync'])
+  }
+  /* watch: {
     username (newVal, oldVal) {
       this.usernamError = newVal === '' ? '请输入用户名' : ''
     },
     password (newVal, oldVal) {
       this.passwordError = newVal === '' ? '请输入密码' : ''
     }
-  }
+  } */
 }
 </script>
 <style lang="stylus" scoped>

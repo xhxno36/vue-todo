@@ -1,1 +1,3 @@
 export const SET_SINGER = 'SET_SINGER'
+
+export const UPDATE_STATE_NUM = 'UPDATE_STATE_NUM'
