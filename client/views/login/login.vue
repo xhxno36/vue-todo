@@ -11,10 +11,13 @@
     </div>
     {{ getFullname }}
     <button class="btn btn-block btn-primary" type="submit" @click.prevent="checkLogin">登&emsp;&emsp;录</button>
+    <div>{{ loginNum }}</div>
+    <div>{{ fullName }}</div>
   </form>
 </template>
 <script>
 import { mapState, mapGetters, mapActions, mapMutations } from 'vuex'
+
 export default {
   // 在渲染该组件的对应路由被 confirm 前调用
   // 不！能！获取组件实例 `this`
@@ -77,10 +80,10 @@ export default {
       time: 5000
     }) */
 
-    this.updateStateNumAsync({
+    /* this.updateStateNumAsync({
       num: 6,
       time: 3000
-    })
+    }) */
   },
   data () {
     return {
@@ -97,7 +100,13 @@ export default {
     ...mapState(['stateNum']),
     ...mapGetters({
       getFullname: 'fullName'
-    })
+    }),
+    /* ...mapState({
+      loginNum: state => state.login.loginNum
+    }), */
+    ...mapState('login', ['loginNum']),
+    // 去取store下面的login module 下面的fullName getters
+    ...mapGetters('login', ['fullName'])
     /* fullName () {
       return this.$store.getters.fullName
     } */
