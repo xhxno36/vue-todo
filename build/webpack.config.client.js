@@ -4,7 +4,7 @@ const merge = require('webpack-merge')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const baseConfig = require('./webpack.config.base')
-const VueClientPlugin = require('vue-server-renderer')
+const VueClientPlugin = require('vue-server-renderer/client-plugin')
 const path = require('path')
 
 const isDev = process.env.NODE_ENV === 'development'

@@ -10,7 +10,8 @@
     "clean": "rimraf dist",
     "lint": "eslint --ext js --ext vue client/",
     "lint-fix": "eslint --fix --ext js --ext vue client/",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.client.js",
+    "dev:client": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.client.js",
+    "dev:server": "cross-env NODE_ENV=development node server/server.js",
     "demo": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.demo.js"
   },
   "author": "",
