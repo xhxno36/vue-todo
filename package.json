@@ -11,7 +11,7 @@
     "lint": "eslint --ext js --ext vue client/",
     "lint-fix": "eslint --fix --ext js --ext vue client/",
     "dev:client": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.client.js",
-    "dev:server": "cross-env NODE_ENV=development node server/server.js",
+    "dev:server": "nodemon node server/server.js",
     "demo": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.demo.js"
   },
   "author": "",
@@ -38,6 +38,7 @@
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.2.0",
     "memory-fs": "^0.4.1",
+    "nodemon": "^1.17.5",
     "postcss-loader": "^2.1.4",
     "rimraf": "^2.6.2",
     "style-loader": "^0.21.0",
