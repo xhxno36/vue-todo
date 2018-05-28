@@ -10,7 +10,9 @@ const config = {
   },
   output: {
     path: path.join(__dirname, '..', 'dist'),
-    filename: 'bundle.[hash:8].js'
+    filename: 'bundle.[hash:8].js',
+    // 服务端渲染的时候有用到
+    publicPath: 'http://127.0.0.1:9000/'
     // publicPath: '/public/'
   },
   module: {
