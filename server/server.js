@@ -1,8 +1,9 @@
 const Koa = require('koa')
 const pageRouter = require('./router/dev-ssr')
-const app = new Koa()
-
 const isDev = process.env.NODE_ENV === 'development'
+
+// 用koa架设 HTTP 服务
+const app = new Koa()
 
 app.use(async (context, next) => {
   try {
@@ -22,6 +23,7 @@ app.use(async (context, next) => {
 app.use(pageRouter.routes()).use(pageRouter.allowedMethods())
 const HOST = process.env.HOST || '0.0.0.0'
 const PORT = process.env.PORT || 3333
+// 监听端口
 app.listen(PORT, HOST, () => {
   console.log(`server is listening on ${HOST}:${PORT}`)
 })
