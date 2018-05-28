@@ -12,6 +12,7 @@
     "lint-fix": "eslint --fix --ext js --ext vue client/",
     "dev:client": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.client.js",
     "dev:server": "nodemon node server/server.js",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
     "demo": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.demo.js"
   },
   "author": "",
@@ -24,6 +25,7 @@
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-1": "^6.24.1",
+    "concurrently": "^3.5.1",
     "cross-env": "^5.1.4",
     "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
