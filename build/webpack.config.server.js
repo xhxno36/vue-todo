@@ -20,10 +20,10 @@ const defaultPlugins = [
 config = merge(baseConfig, {
   target: 'node',
   devtool: '#source-map',
-  entry: path.join(__dirname, '../client/main-server.js'),
+  entry: path.join(__dirname, '../client/server-entry.js'),
   output: {
     libraryTarget: 'commonjs2',
-    filename: 'main-server.js',
+    filename: 'server-entry.js',
     path: path.join(__dirname, '../server-build')
   },
   externals: Object.keys(require('../package.json').dependencies),
