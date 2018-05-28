@@ -28,6 +28,12 @@ import TodoBodyItem from './TodoBodyItem.vue'
 import TodoBodyTabs from './TodoBodyTabs.vue'
 let count = 0
 export default {
+  // vue-meta插件读取这里设置的参数来设置页面的seo
+  metaInfo: {
+    title: 'vue todo page'
+    // keywords: 'vue,todo page',
+    // description: 'this is todo page in vue todo test'
+  },
   // 当前路由切换进来之前调用
   beforeRouteEnter (to, from, next) {
     // console.log('TodoBody.vue before route enter')

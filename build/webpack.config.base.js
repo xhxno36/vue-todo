@@ -6,7 +6,7 @@ const config = {
   // 编译的目标只是属于浏览器环境
   target: 'web',
   entry: {
-    main: path.resolve(__dirname, '../client/main.js')
+    main: path.resolve(__dirname, '../client/client-entry.js')
   },
   output: {
     path: path.join(__dirname, '..', 'dist'),

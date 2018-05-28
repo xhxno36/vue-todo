@@ -19,6 +19,12 @@
 import { mapState, mapGetters, mapActions, mapMutations } from 'vuex'
 
 export default {
+  // vue-meta插件读取这里设置的参数来设置页面的seo
+  metaInfo: {
+    title: 'vue todo login page'
+    // keywords: 'vue,login page',
+    // description: 'this is login page in vue todo test'
+  },
   // 在渲染该组件的对应路由被 confirm 前调用
   // 不！能！获取组件实例 `this`
   // 因为当守卫执行前，组件实例还没被创建

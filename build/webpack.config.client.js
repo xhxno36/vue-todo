@@ -81,7 +81,7 @@ if (isDev) {
 } else {
   config = merge(baseConfig, {
     entry: {
-      // main: path.join(__dirname, '..', 'src/main.js'),
+      // main: path.join(__dirname, '..', 'src/client-entry.js'),
       vendor: ['vue']
     },
     output: {
