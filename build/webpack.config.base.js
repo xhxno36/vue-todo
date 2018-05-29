@@ -9,11 +9,8 @@ const config = {
     main: path.resolve(__dirname, '../client/client-entry.js')
   },
   output: {
-    path: path.join(__dirname, '..', 'dist'),
-    filename: 'bundle.[hash:8].js',
-    // 服务端渲染的时候有用到
-    publicPath: 'http://127.0.0.1:9000/'
-    // publicPath: '/public/'
+    path: path.join(__dirname, '../public'),
+    filename: 'bundle.[hash:8].js'
   },
   module: {
     rules: [

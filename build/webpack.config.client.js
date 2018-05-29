@@ -38,11 +38,14 @@ if (isDev) {
     // 和output下面的publicPath配置有关
     // 如果设置了publicPath 则这里也需要加上publicPath的路径
     historyApiFallback: {
-      index: '/index.html'
+      index: '/public/index.html'
     }
   }
   config = merge(baseConfig, {
     devtool: '#cheap-module-eval-source-map',
+    output: {
+      publicPath: 'http://127.0.0.1:9000/public/'
+    },
     module: {
       rules: [
         {
@@ -85,7 +88,8 @@ if (isDev) {
       vendor: ['vue']
     },
     output: {
-      filename: '[name].[chunkhash:8].js'
+      filename: '[name].[chunkhash:8].js',
+      publicPath: '/public/'
     },
     module: {
       rules: [

@@ -1,9 +1,8 @@
 const Koa = require('koa')
 const koaSend = require('koa-send')
 const path = require('path')
-const pageRouter = require('./router/dev-ssr')
 const isDev = process.env.NODE_ENV === 'development'
-
+const staticRouter = require('./router/static')
 // 用koa架设 HTTP 服务
 const app = new Koa()
 
@@ -29,6 +28,16 @@ app.use(async (ctx, next) => {
     await next()
   }
 })
+
+app.use(staticRouter.routes()).use(staticRouter.allowedMethods())
+
+let pageRouter
+if (isDev) {
+  pageRouter = require('./router/dev-ssr')
+} else {
+  pageRouter = require('./router/ssr')
+}
+
 app.use(pageRouter.routes()).use(pageRouter.allowedMethods())
 const HOST = process.env.HOST || '0.0.0.0'
 const PORT = process.env.PORT || 3333

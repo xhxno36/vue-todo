@@ -1,3 +1,4 @@
+// 开发环境的服务端渲染
 const KoaRouter = require('koa-router')
 const axios = require('axios')
 const MemoryFS = require('memory-fs')
@@ -33,7 +34,7 @@ const handleSSR = async (context) => {
     context.body = 'wait a second, process...'
     return
   }
-  const clientManifestRsp = await axios.get('http://127.0.0.1:9000/vue-ssr-client-manifest.json')
+  const clientManifestRsp = await axios.get('http://127.0.0.1:9000/public/vue-ssr-client-manifest.json')
   const clientManifest = clientManifestRsp.data
   const template = fs.readFileSync(path.join(__dirname, '../server.template.ejs'), 'utf-8')
   const renderer = VueServerRender.createBundleRenderer(bundle, {
