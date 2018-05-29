@@ -8,6 +8,7 @@ const mutations = {
   }, */
   [types.UPDATE_STATE_NUM] (state, { num, num2 }) {
     console.log(num2)
+    // console.log(num)
     state.stateNum = num
   }
 }

@@ -7,6 +7,15 @@ const Actions = {
         num: data.num
       })
     }, data.time)
+  },
+  setLoginNumAsyncGlobal: {
+    // 将命名模块的方法 绑定到全局下
+    root: true,
+    handler (context, payload) {
+      console.log('setLoginNumAsyncGlobal')
+      // console.log(context)
+      console.log(payload)
+    }
   }
 }
 

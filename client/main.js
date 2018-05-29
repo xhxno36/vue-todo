@@ -26,6 +26,30 @@ router.afterEach((to, from) => {
   console.log('global afterEach invoked')
 })
 
+// 动态注册模块
+store.registerModule('todo', {
+  state: {
+    todoNum: 5
+  },
+  getters: {
+    todoNum: state => state.todoNum
+  },
+  mutations: {
+    setTodoNum (state, num) {
+      state.todoNum = num
+    }
+  },
+  actions: {
+    setTodoNumAsync (store, data) {
+      setTimeout(() => {
+        store.commit('setTodoNum', {
+          num: data.num
+        })
+      }, data.time)
+    }
+  }
+})
+
 new Vue({
   router,
   store,

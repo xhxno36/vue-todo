@@ -19,7 +19,7 @@ Vue.use(Vuex)
 
 const debug = process.env.NODE_ENV !== 'production'
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   modules: {
     login: loginStore
   },
@@ -30,3 +30,34 @@ export default new Vuex.Store({
   strict: debug,
   plugins: debug ? [createLogger()] : []
 })
+
+// 让vuex支持热重载
+if (module.hot) {
+  module.hot.accept([
+    './state',
+    './getters',
+    './actions',
+    './mutations',
+    './module/login'
+  ], () => {
+    // 获取更新后的模块
+    const newState = require('./state').default
+    const newGetters = require('./getters').default
+    const newActions = require('./actions').default
+    const newMutations = require('./mutations').default
+    const newLogin = require('./module/login').default
+
+    // 加载新模块
+    store.hotUpdate({
+      state: newState,
+      getters: newGetters,
+      actions: newActions,
+      mutations: newMutations,
+      modules: {
+        login: newLogin()
+      }
+    })
+  })
+}
+
+export default store

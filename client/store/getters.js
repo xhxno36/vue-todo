@@ -4,5 +4,5 @@
 // export const stateNum = state => state.stateNum
 export default {
   stateNum: state => state.stateNum,
-  fullName: state => `${state.firstName} ${state.lastName}`
+  fullName: (state, getters) => `${state.firstName} ${state.lastName}-${getters.stateNum}`
 }

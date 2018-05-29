@@ -21,18 +21,23 @@
         />
 
         <router-view/>
+
+        {{todoNum}}
     </section>
 </template>
 <script>
 import TodoBodyItem from './TodoBodyItem.vue'
 import TodoBodyTabs from './TodoBodyTabs.vue'
+import {mapGetters} from 'vuex'
 let count = 0
 export default {
   // vue-meta插件读取这里设置的参数来设置页面的seo
   metaInfo: {
-    title: 'vue todo page'
-    // keywords: 'vue,todo page',
-    // description: 'this is todo page in vue todo test'
+    title: 'vue todo page',
+    meta: [
+      {name: 'keywords', content: 'vue, todo page'},
+      {name: 'description', content: 'this is vue todo app\'s todo page'}
+    ]
   },
   // 当前路由切换进来之前调用
   beforeRouteEnter (to, from, next) {
@@ -76,7 +81,8 @@ export default {
 
       const completed = this.filter === 'completed'
       return this.todos.filter(todo => completed === todo.completed)
-    }
+    },
+    ...mapGetters(['todoNum'])
   },
   methods: {
     addTodo (e) {

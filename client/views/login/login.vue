@@ -2,7 +2,7 @@
   <form class="login-form">
     <h1>Login {{ stateNum }}</h1>
     <div class="form-group">
-      <input type="text" class="form-control" placeholder="User Name" :value="username">
+      <input type="text" class="form-control" placeholder="User Name" :value="stateNum" @input="updateStateNumLocal">
       <div class="error-msg" v-if="usernameError">{{usernameError}}</div>
     </div>
     <div class="form-group">
@@ -21,9 +21,11 @@ import { mapState, mapGetters, mapActions, mapMutations } from 'vuex'
 export default {
   // vue-meta插件读取这里设置的参数来设置页面的seo
   metaInfo: {
-    title: 'vue todo login page'
-    // keywords: 'vue,login page',
-    // description: 'this is login page in vue todo test'
+    title: 'vue todo login page',
+    meta: [
+      {name: 'keywords', content: 'vue, login page'},
+      {name: 'description', content: 'this is vue todo app\'s login page'}
+    ]
   },
   // 在渲染该组件的对应路由被 confirm 前调用
   // 不！能！获取组件实例 `this`
@@ -70,10 +72,10 @@ export default {
     // 使用mutation
     /* let i = 0
     setInterval(() => {
-      this.$store.commit('UPDATE_STATE_NUM', {
-        num: i++,
-        num2: 2
-      })
+      // this.$store.commit('UPDATE_STATE_NUM', {
+      // num: i++,
+      // num2: 2
+      // })
       this.updateStateNum({
         num: i++,
         num2: 2
@@ -90,6 +92,10 @@ export default {
       num: 6,
       time: 3000
     }) */
+
+    // this['login/setLoginNumAsync']({num: 6, time: 3000})
+
+    // this.setLoginNumAsyncGlobal()
   },
   data () {
     return {
@@ -120,19 +126,19 @@ export default {
   methods: {
     checkLogin () {
     },
+    // vuex关于表单的处理
+    // https://vuex.vuejs.org/zh-cn/forms.html
+    updateStateNumLocal (e) {
+      this.updateStateNum({
+        num: e.target.value
+      })
+    },
     ...mapMutations({
       updateStateNum: 'UPDATE_STATE_NUM'
     }),
+    // ...mapActions(['updateStateNumAsync', 'login/setLoginNumAsync', 'setLoginNumAsyncGlobal'])
     ...mapActions(['updateStateNumAsync'])
   }
-  /* watch: {
-    username (newVal, oldVal) {
-      this.usernamError = newVal === '' ? '请输入用户名' : ''
-    },
-    password (newVal, oldVal) {
-      this.passwordError = newVal === '' ? '请输入密码' : ''
-    }
-  } */
 }
 </script>
 <style lang="stylus" scoped>
