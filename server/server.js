@@ -6,17 +6,17 @@ const staticRouter = require('./router/static')
 // 用koa架设 HTTP 服务
 const app = new Koa()
 
-app.use(async (context, next) => {
+app.use(async (ctx, next) => {
   try {
-    console.log(`request with path ${context.path}`)
+    console.log(`request with path ${ctx.path}`)
     await next()
   } catch (error) {
     console.log(error)
-    context.status = 500
+    ctx.status = 500
     if (isDev) {
-      context.body = error.message
+      ctx.body = error.message
     } else {
-      context.body = 'please try again later'
+      ctx.body = 'please try again later'
     }
   }
 })
