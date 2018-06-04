@@ -14,7 +14,7 @@
         </transition>
       </keep-alive>
 
-      <notification content="hello"/>
+      <!-- <notification content="hello"/> -->
       <todo-footer/>
   </div>
 </template>
@@ -27,6 +27,12 @@ export default {
     TodoHeader,
     // TodoBody,
     TodoFooter
+  },
+  mounted () {
+    this.$notify({
+      content: 'hello notify',
+      btn: 'close'
+    })
   }
 }
 </script>

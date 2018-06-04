@@ -28,6 +28,8 @@ if (isDev) {
       // 显示错误信息
       errors: true
     },
+    // 允许跨域 因为output那里指定了publicPath是127.0.0.1 而本地访问的时候 一般是localhost 会有跨域问题 增加这个设置可解决
+    headers: {'Access-Control-Allow-Origin': '*'},
     // 是否启用热加载 修改代码的时候不会刷新页面 就能显示修改的结果
     hot: true,
     // open: true,

@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div class="notification">
+    <div class="notification" :style="style" v-show="visible">
       <span class="content">{{content}}</span>
       <span class="btn" @click="handleClose">{{btn}}</span>
     </div>
@@ -17,6 +17,18 @@ export default {
     btn: {
       type: String,
       default: '关闭'
+    }
+  },
+  data () {
+    return {
+      visible: true
+    }
+  },
+  computed: {
+    style () {
+      return {
+
+      }
     }
   },
   methods: {
