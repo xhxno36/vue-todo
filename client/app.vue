@@ -16,6 +16,8 @@
 
       <!-- <notification content="hello"/> -->
       <todo-footer/>
+
+      <button type="button" @click="showNotifiy">show me</button>
   </div>
 </template>
 <script>
@@ -29,10 +31,15 @@ export default {
     TodoFooter
   },
   mounted () {
-    this.$notify({
-      content: 'hello notify',
-      btn: 'close'
-    })
+
+  },
+  methods: {
+    showNotifiy () {
+      this.$notify({
+        content: 'hello notify',
+        btn: 'close'
+      })
+    }
   }
 }
 </script>
