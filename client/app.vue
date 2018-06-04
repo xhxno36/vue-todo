@@ -3,10 +3,10 @@
       <div class="cover"></div>
       <todo-header/>
       <!-- <todo-body></todo-body> -->
-      <router-link to="/login">login</router-link>
+      <!-- <router-link to="/login">login</router-link>
       <router-link to="/login/456">login 456</router-link>
       <router-link to="/todo">todo</router-link>
-      <router-link to="/todo/sub">todo sub</router-link>
+      <router-link to="/todo/sub">todo sub</router-link> -->
 
       <keep-alive>
         <transition name="fade">
@@ -14,6 +14,7 @@
         </transition>
       </keep-alive>
 
+      <notification content="hello"/>
       <todo-footer/>
   </div>
 </template>
